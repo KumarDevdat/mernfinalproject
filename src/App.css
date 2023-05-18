@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+:root {
+  --yellow: #f6fe84;
+  --white: #ffffff;
+}
+.tag-container {
+  display: flex;
+  justify-content: center;
+}
+.tag-one {
+  height: 120px;
+  width: 100vw;
+  background: var(--yellow);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transform: scale(1.1) rotate(-9deg);
+  position: absolute;
+  top: 800px;
+  z-index: 2;
+}
+.tag-two {
+  height: 120px;
+  width: 100vw;
+  background: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transform: scale(1.1) rotate(9deg);
+  position: absolute;
+  top: 800px;
+  z-index: 1;
+}
+.tag-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 50px;
+  /* animation properties */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 20s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+.tag-two > .tag-title {
+  /* animation properties */
+  -moz-transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+}
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateX(-100%);
+  }
+  to {
+    -moz-transform: translateX(100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateX(-100%);
+  }
+  to {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  to {
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+.text-container {
+  display: grid;
+  justify-content: center;
+  position: relative;
+  bottom: 500px;
+}
+.text-container > p {
+  text-align: center;
+  font-family: "Orbitron";
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 31px;
+  color: var(--white);
+  font-size: 30px;
+}
+p:nth-child(2) {
+  font-family: "Orbitron";
+  font-weight: 400;
+  font-size: 83px;
+  line-height: 104px;
+}
+p:nth-child(3) {
+  font-family: "Orbitron";
+  font-weight: 400;
+  font-size: 130px;
+  line-height: 163px;
+}

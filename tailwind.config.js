@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {},
+    colors:{
+      mainBgColor:'#191919',
+    },
+    fontFamily: {
+      'orbitron': ['Orbitron']
+      
+    },
   },
   plugins: [],
 }
