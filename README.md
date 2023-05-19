@@ -1,2 +1,2 @@
 # projectmern
-This repository is for the back end of a MERN project.
+This repository is for the front end of a MERN project.
