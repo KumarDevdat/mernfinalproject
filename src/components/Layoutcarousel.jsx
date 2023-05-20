@@ -1,9 +1,9 @@
 import Carousel from "react-bootstrap/Carousel";
-import cycle from "../../assets/images/cycle.gif";
-import hike from "../../assets/images/hike.gif";
-import running from "../../assets/images/running.gif";
+import cycle from "../assets/cycle.gif";
+import hike from "../assets/hike.gif";
+import running from "../assets/running.gif";
 
-function HomeCarousel() {
+function Layoutcarousel() {
   return (
     <Carousel>
       <Carousel.Item>
@@ -38,4 +38,4 @@ function HomeCarousel() {
   );
 }
 
-export default HomeCarousel;
+export default Layoutcarousel;

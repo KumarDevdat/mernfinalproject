@@ -1,15 +1,12 @@
-import React from "react";
-import "../Home/Home.css";
-import Navbar from "../../components/navbar/navbar";
-import HomeCarousel from "../../components/home/HomeCarousel";
-
 import { Col, Row } from "antd";
+import './index.css'
+import Layoutcarousel from "../../components/Layoutcarousel";
+
 const Home = () => {
   return (
     <>
       <div className="bg-mainBgColor">
-        <Navbar />
-        <HomeCarousel />
+        <Layoutcarousel />
         <div className="">
           <div className="tag-one">
             <div className="tag-title">TRACK ACTIVITIES, BOOST PERFORMANCE</div>
