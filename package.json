@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
     "antd": "^5.5.0",
     "bootstrap": "^5.2.3",
     "postcss-import": "^15.1.0",

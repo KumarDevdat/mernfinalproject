@@ -1,11 +1,13 @@
 import { Col, Row } from "antd";
 import './index.css'
 import Layoutcarousel from "../../components/Layoutcarousel";
+import Navbar from "../../components/Navbar";
 
 const Home = () => {
   return (
     <>
       <div className="bg-mainBgColor">
+        <Navbar />
         <Layoutcarousel />
         <div className="">
           <div className="tag-one">
