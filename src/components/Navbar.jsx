@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Link } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { menu } from "../assets";
 
@@ -16,11 +17,13 @@ export default function Navbar() {
             <div className="relative flex items-center justify-between h-16">
               <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                 <div className="flex items-center flex-shrink-0">
+                <Link to="/">
                   <img
                     className="w-auto h-8 lg:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" //this is where is company logo will go!
                     alt="Your Company"
                   />
+                  </Link>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -49,28 +52,28 @@ export default function Navbar() {
                     <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/signup"
+                          <Link
+                            to="/signup"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign Up
-                          </a>
+                          </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/login"
+                          <Link
+                            to="/login"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign In
-                          </a>
+                          </Link>
                         )}
                       </Menu.Item>
                     </Menu.Items>
