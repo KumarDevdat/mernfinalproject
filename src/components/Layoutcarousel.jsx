@@ -1,7 +1,5 @@
 import Carousel from "react-bootstrap/Carousel";
-import cycle from "../assets/cycle.gif";
-import hike from "../assets/hike.gif";
-import running from "../assets/running.gif";
+import { cycle, hike, running } from "../assets/index";
 
 function Layoutcarousel() {
   return (
