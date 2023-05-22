@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 
-:root {
-  --yellow: #f6fe84;
-  --white: #ffffff;
-}
-
 @media only screen and (min-width: 992px){
 
     .carousel-text-one {
@@ -12,7 +7,7 @@
         font-family: "Orbitron";
         font-weight: 400;
         font-size: 25px;
-        color: var(--white);
+        color: #ffffff;
         font-size: 30px;
       }
       p:nth-child(2) {
@@ -24,7 +19,7 @@
         font-family: "Orbitron";
         font-weight: 900;
         font-size: 130px;
-        color: var(--yellow);
+        color: #f6fe84;
         text-shadow: 1px 1px 2px;
       }
       .carousel-btn{
@@ -40,7 +35,7 @@
       .tag-one {
         height: 120px;
         width: 100vw;
-        background: var(--yellow);
+        background: #f6fe84;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -72,7 +67,7 @@
         font-family: "Orbitron";
         font-weight: 200;
         font-size: 25px;
-        color: var(--white);
+        color: #ffffff;
         font-size: 10px;
       }
       p:nth-child(2) {
@@ -84,7 +79,7 @@
         font-family: "Orbitron";
         font-weight: 700;
         font-size: 25px;
-        color: var(--yellow);
+        color: #f6fe84;
         text-shadow: 1px 1px 2px;
       }
       .carousel-btn{
@@ -101,7 +96,7 @@
         height: 50px;
         width: 100%;
         display: flex;
-        background: var(--yellow);
+        background: #f6fe84;
         align-items: center;
         white-space: nowrap;
         text-overflow: ellipsis;
