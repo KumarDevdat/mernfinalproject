@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { menu } from "../assets";
+import { menu, logo } from "../assets";
 
 
 function classNames(...classes) {
@@ -10,7 +10,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-mainBgColor">
       {
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -20,8 +20,8 @@ export default function Navbar() {
                 <Link to="/">
                   <img
                     className="w-auto h-8 lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" //this is where is company logo will go!
-                    alt="Your Company"
+                    src={logo} //this is where is company logo will go!
+                    alt="Dr. Fitness"
                   />
                   </Link>
                 </div>
@@ -66,7 +66,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="/login"
+                            to="/signin"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
