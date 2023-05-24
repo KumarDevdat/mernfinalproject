@@ -55,24 +55,20 @@ const signupFields = [
 
 const activityFields = [
   {
-      labelText: "Activity Type",
-      labelFor: "activitytype",
       id: "activitytype",
       name: "Activitytype",
       type: "select",
       isRequired: true,
       placeholder: "Select Activity Type",
       options: [
-          { value: "option1", label: "Option 1" },
-          { value: "option2", label: "Option 2" },
-          { value: "option3", label: "Option 3" },
-          { value: "option4", label: "Option 4" },
-          { value: "option5", label: "Option 5" },
+        { value: "option1", label: "Running '\u{1F3C3}'" },
+        { value: "option2", label: "Bicycle '\u{1F6B2}'" },
+        { value: "option3", label: "Swimming'\u{1F3CA}'" },
+        { value: "option4", label: "Walking'\u{1F6B6}'" },
+        { value: "option5", label: "Hiking'\u{1F9D7}'" },
       ],
   },
   {
-      labelText: "Description",
-      labelFor: "description",
       id: "description",
       name: "Description",
       type: "textarea",
@@ -80,8 +76,6 @@ const activityFields = [
       placeholder: "Enter Description",
   },
   {
-      labelText: "Date",
-      labelFor: "date",
       id: "date",
       name: "Date",
       type: "date",
@@ -89,8 +83,6 @@ const activityFields = [
       placeholder: "Select Date",
   },
   {
-      labelText: "Time",
-      labelFor: "time",
       id: "time",
       name: "Time",
       type: "time",

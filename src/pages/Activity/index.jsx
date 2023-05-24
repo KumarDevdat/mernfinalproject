@@ -46,8 +46,6 @@ export default function ActivityPage() {
                   key={field.id}
                   handleChange={handleChange}
                   value={activityState[field.id]}
-                  labelText={field.labelText}
-                  labelFor={field.labelFor}
                   id={field.id}
                   name={field.name}
                   type={field.type}

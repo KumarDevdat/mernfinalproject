@@ -47,8 +47,6 @@ export default function SignupPage() {
                   key={field.id}
                   handleChange={handleChange}
                   value={signupState[field.id]}
-                  labelText={field.labelText}
-                  labelFor={field.labelFor}
                   id={field.id}
                   name={field.name}
                   type={field.type}

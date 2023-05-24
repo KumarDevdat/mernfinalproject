@@ -6,8 +6,6 @@ const fixedInputClass =
 export default function Input({
   handleChange,
   value,
-  labelText,
-  labelFor,
   id,
   name,
   type,
@@ -18,9 +16,6 @@ export default function Input({
 }) {
   return (
     <div className="my-5">
-      <label htmlFor={labelFor} className="sr-only">
-        {labelText}
-      </label>
       {type === "select" ? (
         <select
           onChange={handleChange}
@@ -57,8 +52,6 @@ export default function Input({
 Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  labelText: PropTypes.string.isRequired,
-  labelFor: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['text', 'number', 'password', 'email', 'select']).isRequired,
