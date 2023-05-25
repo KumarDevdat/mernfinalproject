@@ -10,12 +10,12 @@
         color: #ffffff;
         font-size: 30px;
       }
-      p:nth-child(2) {
+      .carousel-text-two{
         font-family: "Orbitron";
         font-weight: 400;
         font-size: 72px;
       }
-      p:nth-child(3) {
+      .carousel-text-three{
         font-family: "Orbitron";
         font-weight: 900;
         font-size: 130px;
@@ -70,12 +70,12 @@
         color: #ffffff;
         font-size: 10px;
       }
-      p:nth-child(2) {
+      .carousel-text-two{
         font-family: "Orbitron";
         font-weight: 300;
         font-size: 16px;
       }
-      p:nth-child(3) {
+      .carousel-text-three{
         font-family: "Orbitron";
         font-weight: 700;
         font-size: 25px;

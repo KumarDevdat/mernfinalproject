@@ -9,8 +9,8 @@ function Layoutcarousel() {
         <img className="d-block w-100" src={cycle} alt="First slide" />
         <Carousel.Caption>
           <p className="carousel-text-one">SOMETHING LIKE SOMETHING YOU NEED</p>
-          <p>TAKE ACTION</p>
-          <p>TODAY !</p>
+          <p className="carousel-text-two">TAKE ACTION</p>
+          <p className="carousel-text-three">TODAY !</p>
           <button className="carousel-btn">
             <Link to="/signin">GET READY</Link>
           </button>
