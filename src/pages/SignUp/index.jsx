@@ -49,7 +49,7 @@ const SignupPage = () => {
     switch (selectedMonkey) {
       case "username":
         return <img src={monkey1} alt="Monkey 1" />;
-      case "email-address":
+      case "email":
         return <img src={monkey2} alt="Monkey 2" />;
       case "password":
         return <img src={monkey3} alt="Monkey 3" />;

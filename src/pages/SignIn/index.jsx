@@ -44,7 +44,7 @@ const SigninPage = () => {
 
   const monkeyImage = () => {
     switch (selectedMonkey) {
-      case "email-address":
+      case "email":
         return <img src={monkey2} alt="Monkey 2" />;
       case "password":
         return <img src={monkey3} alt="Monkey 3" />;
