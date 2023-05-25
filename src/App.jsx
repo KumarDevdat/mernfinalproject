@@ -1,10 +1,10 @@
-import { createBrowserRouter, RouterProvider  } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 import Home from "./pages/Home/";
 import Signin from "./pages/SignIn/";
 import Signup from "./pages/Signup/";
-import Dashboard from "./pages/UserDashboard/";
+import Dashboard from "./pages/UserDashboard/Dashboard";
 import NotFound from "./pages/NotFound";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import User from "./pages/User/";
@@ -12,41 +12,43 @@ import ActivityForm from "./pages/Activity/";
 
 export const routes = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/activity',
+    path: "/activity",
     element: <ActivityForm />,
   },
-  {  
-    path: '/signin',
+  {
+    path: "/signin",
     element: <Signin />,
   },
   {
-    path: '/signup',
+    path: "/signup",
     element: <Signup />,
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <ProtectedRoutes />,
     children: [
       {
         index: true,
-        element: <Dashboard />
+        path: "/dashboard",
+        element: <Dashboard />,
       },
-      // {
-      //   path: 'test',
-      //   element: <About />
-      // }
-    ]
+      {
+        path: "/dashboard/history",
+        element: <History />,
+      },
+    ],
+  },
+
+  {
+    path: "/user/:userId",
+    element: <User />,
   },
   {
-    path: '/user/:userId',
-    element: <User/>,  
-  },
-  {
-    path: '*',
+    path: "*",
     element: <NotFound />,
   },
 ]);
