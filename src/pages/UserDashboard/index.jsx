@@ -4,12 +4,12 @@ const Dashboard = () => {
 
     <h1>Dashboard</h1>
     const navigate = useNavigate(); const handleGoBack = () => { navigate(-1) }
-    const handleGotoLogin = () => { navigate("/login") }
+    const handleGotoSignin = () => { navigate("/signin") }
     return (
         <>
             <div>
                 <button onClick={handleGoBack}>Go back</button>
-                <button onClick={handleGotoLogin}>Goto Login page</button>
+                <button onClick={handleGotoSignin}>Goto Signin page</button>
             </div>
         </>
     )

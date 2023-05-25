@@ -20,7 +20,7 @@ const SigninPage = () => {
     e.preventDefault();
     console.log(signinState)
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signinState),
@@ -28,7 +28,7 @@ const SigninPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Login successful", data);
+        console.log("Signin successful", data);
       } else {
         const errorData = await response.json();
         console.log("Authentication failed", errorData);

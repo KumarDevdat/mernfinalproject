@@ -4,7 +4,7 @@ export default function ProtectedRoutes(){
   const isLoggedIn = true;
 
   if (!isLoggedIn) {
-    return <Navigate to='/login' />
+    return <Navigate to='/signin' />
   }
 
   return <Outlet />
