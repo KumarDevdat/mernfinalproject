@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const fixedInputClass =
+const inputClass =
   "rounded-md appearance-none relative block w-full px-3 py-2 border border-black placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-purple-500 focus:border-green-500 border-2 focus:z-10 sm:text-sm";
 
 export default function Input({
@@ -23,15 +23,14 @@ export default function Input({
           id={id}
           name={name}
           required={isRequired}
-          className={fixedInputClass + customClass}
+          className={`${inputClass} ${customClass}`}
         >
           <option value="">{placeholder}</option>
-          {options &&
-            options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       ) : (
         <input
@@ -41,7 +40,7 @@ export default function Input({
           name={name}
           type={type}
           required={isRequired}
-          className={fixedInputClass + customClass}
+          className={`${inputClass} ${customClass}`}
           placeholder={placeholder}
         />
       )}
@@ -54,13 +53,13 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['text', 'number', 'password', 'email', 'select']).isRequired,
+  type: PropTypes.string.isRequired,
   isRequired: PropTypes.bool,
   placeholder: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      label: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      label: PropTypes.string.isRequired,
     })
   ),
   customClass: PropTypes.string,
