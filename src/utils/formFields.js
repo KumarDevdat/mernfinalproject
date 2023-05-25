@@ -61,11 +61,11 @@ const activityFields = [
       isRequired: true,
       placeholder: "Select Activity Type",
       options: [
-        { value: "option1", label: "Running '\u{1F3C3}'" },
-        { value: "option2", label: "Bicycle '\u{1F6B2}'" },
-        { value: "option3", label: "Swimming'\u{1F3CA}'" },
-        { value: "option4", label: "Walking'\u{1F6B6}'" },
-        { value: "option5", label: "Hiking'\u{1F9D7}'" },
+        { value: "running", label: "Running '\u{1F3C3}'" },
+        { value: "bicycle", label: "Bicycle '\u{1F6B2}'" },
+        { value: "swimming", label: "Swimming'\u{1F3CA}'" },
+        { value: "walking", label: "Walking'\u{1F6B6}'" },
+        { value: "hiking", label: "Hiking'\u{1F9D7}'" },
       ],
   },
   {
