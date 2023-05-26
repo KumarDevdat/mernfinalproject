@@ -83,11 +83,11 @@ const activityFields = [
       placeholder: "Select Date",
   },
   {
-      id: "time",
-      name: "Time",
-      type: "time",
+      id: "duration",
+      name: "Duration",
+      type: "input",
       isRequired: true,
-      placeholder: "Select Time",
+      placeholder: "Set Duration in Minutes",
   },
 ];
 

@@ -5,14 +5,13 @@ import FormButton from "../../components/FormButton";
 import Input from "../../components/Input";
 import { beams } from "../../assets";
 import { Modal } from "react-bootstrap";
-import { createActivity } from "../../Api/dashboard";
 const fields = activityFields;
 const initialActivityState = Object.fromEntries(
   fields.map((field) => [field.id, ""])
 );
 
 export default function ActivityPage(props) {
-  const { show, handleShow, handleClose, handleNotification } = props;
+  const { show, handleShow, handleClose, handleNotification,state } = props;
   const [activityState, setActivityState] = useState(initialActivityState);
 
   const handleChange = (e) => {
@@ -25,36 +24,34 @@ export default function ActivityPage(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createActivity();
+    await updateActivity();
   };
 
-  const createActivity = async () => {
+  const updateActivity = async (activityId, updatedActivity) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/exercise/save",
+        `http://localhost:5000/api/v1/exercise/${activityId}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(activityState),
+          body: JSON.stringify(updatedActivity),
         }
       );
+  
       if (response.ok) {
         const data = await response.json();
-        console.log("Activity created successfully", data);
-        setActivityState(initialActivityState);
-        let message = results.data.msg;
-        let success = results.data.success;
-        handleNotification("success", message, success);
-        handleClose()
+        console.log("Activity updated successfully", data);
+        // Handle success scenario
       } else {
         const errorData = await response.json();
-        console.log("Failed to create activity", errorData);
+        console.log("Failed to update activity", errorData);
+        // Handle error scenario
       }
     } catch (error) {
-      console.error("Error occurred during activity creation", error);
+      console.error("Error occurred during activity update", error);
+      // Handle error scenario
     }
   };
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -68,7 +65,7 @@ export default function ActivityPage(props) {
               <h2 className="mt-1 font-mono text-3xl text-center text-gray-900">
                 Activity
               </h2>
-              <form className="mt-8 space-y-6" onSubmit={createActivity}>
+              <form className="mt-8 space-y-6" onSubmit={updateActivity}>
                 {fields.map((field) => (
                   <Input
                     key={field.id}
