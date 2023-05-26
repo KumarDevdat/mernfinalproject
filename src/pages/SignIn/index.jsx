@@ -20,7 +20,7 @@ const SigninPage = () => {
     e.preventDefault();
     console.log(signinState)
     try {
-      const response = await fetch("/api/signin", {
+      const response = await fetch("http://localhost:5000/api/v1/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signinState),
@@ -29,6 +29,9 @@ const SigninPage = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Signin successful", data);
+
+        // Redirect to a different page or perform other actions
+        window.location.href = '/dashboard';
       } else {
         const errorData = await response.json();
         console.log("Authentication failed", errorData);
@@ -44,7 +47,7 @@ const SigninPage = () => {
 
   const monkeyImage = () => {
     switch (selectedMonkey) {
-      case "email-address":
+      case "email":
         return <img src={monkey2} alt="Monkey 2" />;
       case "password":
         return <img src={monkey3} alt="Monkey 3" />;
