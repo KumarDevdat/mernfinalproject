@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal, menu } from "../../assets";
+import { dashboardgoal} from "../../assets";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
 import { FaSwimmer, FaCalendar, FaEdit } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 import { AiFillDelete } from "react-icons/ai";
-import { notification, Modal } from "antd";
+import { notification } from "antd";
 import Actvity from "../Activity";
 import UpdateActivity from '../Activity/Update'
-import {updateActivity} from "../../Api/dashboard"
 import { getActivityPagination, deleteActivity } from "../../Api/dashboard";
 import { Pagination } from "antd";
 const Dashboard = () => {
@@ -67,9 +66,9 @@ const Dashboard = () => {
         <div className="">
           <Sidebar />
         </div>
-        <div className="container  ">
+        <div className="container ">
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron">
+            <h1 className="py-4 text-6xl font-normal font-orbitron">
               Overview
             </h1>
             <div className="w-[46em] h-[344px] rounded-[50px] bg-mainBgColor flex lg:items-center">
@@ -88,7 +87,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron">
+            <h1 className="py-4 text-6xl font-normal font-orbitron">
               Activity
             </h1>
           </div>

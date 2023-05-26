@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import { yoga, strategies, workout, pulsemeter } from "../../assets/index";
 
-function Brocure() {
+function Brochure() {
   return (
     <>
       <div>
@@ -124,4 +124,4 @@ function Brocure() {
     </>
   );
 }
-export default Brocure;
+export default Brochure;

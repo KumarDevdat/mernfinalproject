@@ -43,8 +43,8 @@ export default function ActivityPage(props) {
         const data = await response.json();
         console.log("Activity created successfully", data);
         setActivityState(initialActivityState);
-        let message = results.data.msg;
-        let success = results.data.success;
+        let message = data.msg;
+        let success = data.success;
         handleNotification("success", message, success);
         handleClose()
       } else {
@@ -64,7 +64,7 @@ export default function ActivityPage(props) {
           className="relative bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${beams})` }}
         >
-          <div className="flex items-center justify-center h-screen min-h-full px-4  sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center h-screen min-h-full px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md p-8 space-y-7 min-w-sm rounded-2xl drop-shadow-2xl bg-gradient-to-bl from-[#73d1eed3] from-20% to-[#55f0f065] to-40%">
               <h2 className="mt-1 font-mono text-3xl text-center text-gray-900">
                 Activity
