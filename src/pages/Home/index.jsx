@@ -2,6 +2,7 @@ import "./index.css";
 import Navbar from "../../components/Navbar";
 import Layoutcarousel from "./Layoutcarousel";
 import Brocure from "./Brochure";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
         </div>
         <br />
         <Brocure />
+        <Footer /> 
       </div>
     </>
   );
