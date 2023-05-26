@@ -1,45 +1,66 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal } from "../../assets";
+import { dashboardgoal, menu } from "../../assets";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
 import { FaSwimmer, FaCalendar, FaEdit } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 import { AiFillDelete } from "react-icons/ai";
-import Actvity from '../Activity'
+import { notification, Modal } from "antd";
+import Actvity from "../Activity";
+import UpdateActivity from '../Activity/Update'
+import {updateActivity} from "../../Api/dashboard"
+import { getActivityPagination, deleteActivity } from "../../Api/dashboard";
+import { Pagination } from "antd";
 const Dashboard = () => {
-    const [state, setState] = useState({
-        values:{
-            id:'',
-            activitytype:'',
-            description:'',
-            date:'',
-            duration:''
-        }
-    })
-  const checkData = [
-    {
-      activity: "bicycle",
-      date: "12-may-2022",
-      duration: "2-minutes",
+  const [page, setPage] = useState(1);
+  const [open, setOpen] = useState(false);
+  const [limit, setlimit] = useState(4);
+  const [show, setShow] = useState(false);
+    
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+  const [state, setState] = useState({
+    values: {
+      update_id: "",
+      activitytype: "",
+      description: "",
+      date: "",
+      duration: "",
     },
-    {
-      activity: "run",
-      date: "12-may-2022",
-      duration: "2-minutes",
-    },
-    {
-      activity: "swim",
-      date: "12-may-2022",
-      duration: "2-minutes",
-    },
-    {
-      activity: "walk",
-      date: "12-may-2022",
-      duration: "2-minutes",
-    },
-  ];
+    activityList: [],
+    totalPage: [],
+  });
+  const getActivities = async () => {
+    const result = await getActivityPagination(page, limit);
+    if (result.data.status === 200) {
+      setState((prevState) => ({
+        ...prevState,
+        activityList: result.data.result.getActivity,
+        totalPage: result.data.result.totalPages,
+      }));
+    }
+  };
+  const ActivityDelete = async (id) => {
+    const results = await deleteActivity(id);
+    if (results.data.status === 200) {
+      let message = results.data.msg;
+      let success = results.data.success;
+      handleNotification("success", message, success);
+    }
+  };
+  const handleNotification = (value, message, success) => {
+    notification[value]({
+      message: success,
+      description: message,
+      placement: "topRight",
+    });
+  };
+  
+  useEffect(() => {
+    getActivities();
+  }, [page]);
   return (
     <>
       <div className="flex">
@@ -57,7 +78,10 @@ const Dashboard = () => {
                 <p className="text-4xl leading-[45px] text-white font-orbitron">
                   SET GOAL AND MOTIVATE YOURSELF
                 </p>
-                <button className="mt-5 w-[200px] h-16 bg-white rounded-[15px] bg-grey font-normal text-xl font-orbitron">
+                <button
+                  className="mt-5 w-[200px] h-16 bg-white rounded-[15px] bg-grey font-normal text-xl font-orbitron"
+                  onClick={handleShow}
+                >
                   Set Goal
                 </button>
               </div>
@@ -69,37 +93,91 @@ const Dashboard = () => {
             </h1>
           </div>
           <div className="flex justify-evenly">
-          {checkData.map((element, index) => {
+            {state.activityList.map((element, key) => {
               return (
-                  <>
-                <div className="w-[250px] h-[230px] bg-mainBgColor rounded-[25px] ">
-                  <i className="text-white grid justify-center text-[60px]">
-                  {(element.activity) =='bicycle' ? <IoMdBicycle /> :
-                  (element.activity) =='swim' ? <FaSwimmer /> :
-                  (element.activity) =='walk' ? <RiWalkFill /> :
-                  (element.activity) =='run' ? <BiRun /> :
-                  (element.activity) =='hike' ? <GiHiking /> :
-                  ''}
-                  </i>
-                  <div>
-                    <div className="flex text-white text-[20px] px-[20px] pt-[25px]">
-                        <i className="text-[30px]"><FaCalendar/></i>
-                        <span className="pl-[15px] text-[20px]">{element.date}</span>
-                        </div>
-                    <div className="flex text-white  px-[20px] pt-[15px]">
-                        <i className="text-[30px]"><BiTimeFive/></i>
-                        <span className="pl-[15px] text-[20px]">{element.duration}</span>
-                    </div>
-                    <div className="flex justify-center text-white pt-[15px]">
-                        <i className="text-[30px]"><FaEdit/></i>
-                        <i className="text-[30px] pl-[10px]"><AiFillDelete/></i>
+                <>
+                  <div
+                    key={key}
+                    className="w-[250px] h-[230px] bg-mainBgColor rounded-[25px] "
+                  >
+                    <i className="text-white grid justify-center text-[60px]">
+                      {element.activitytype == "bicycle" ? (
+                        <IoMdBicycle />
+                      ) : element.activitytype == "swim" ? (
+                        <FaSwimmer />
+                      ) : element.activitytype == "walk" ? (
+                        <RiWalkFill />
+                      ) : element.activitytype == "run" ? (
+                        <BiRun />
+                      ) : element.activitytype == "hike" ? (
+                        <GiHiking />
+                      ) : (
+                        ""
+                      )}
+                    </i>
+                    <div>
+                      <div className="flex text-white text-[20px] px-[20px] pt-[25px]">
+                        <i className="text-[30px]">
+                          <FaCalendar />
+                        </i>
+                        <span className="pl-[15px] text-[20px]">
+                          {element.date}
+                        </span>
+                      </div>
+                      <div className="flex text-white  px-[20px] pt-[15px]">
+                        <i className="text-[30px]">
+                          <BiTimeFive />
+                        </i>
+                        <span className="pl-[15px] text-[20px]">
+                          {element.duration}
+                        </span>
+                      </div>
+                      <div className="flex justify-center text-white pt-[15px]">
+                        <i
+                          className="text-[30px]"
+                          onClick={() => {
+                            handleShow(setState.update_id(element._id))
+                          }}
+                          
+                        >
+                          <FaEdit />
+                        </i>
+                        <i
+                          className="text-[30px] pl-[10px]"
+                          onClick={() => {
+                            ActivityDelete(element._id);
+                          }}
+                        >
+                          <AiFillDelete />
+                        </i>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            );
-        })}
-        </div>
+                </>
+              );
+            })}
+          </div>
+          <div className="flex justify-center pt-[15px]">
+            <Pagination
+              defaultCurrent={1}
+              total={30}
+              onChange={(page) => setPage(page)}
+            />
+              <Actvity 
+              handleShow={handleShow}
+              show={show}
+              handleClose={handleClose}
+              handleNotification={handleNotification}
+              />
+              <UpdateActivity
+              state={state}
+              handleShow={handleShow}
+              show={show}
+              handleClose={handleClose}
+              handleNotification={handleNotification}
+              />
+
+          </div>
         </div>
       </div>
     </>

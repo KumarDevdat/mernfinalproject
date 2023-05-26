@@ -3,8 +3,7 @@ import { AiFillHome, AiOutlineHistory, AiFillSetting } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import { control } from "../../assets";
-const Sidebar = ({routes}) => {
-    console.log('====>', routes)
+const Sidebar = () => {
   const menuItem = [
     {
       key: "Dashboard",
