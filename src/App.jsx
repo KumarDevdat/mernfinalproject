@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import User from "./pages/User/";
 import ActivityForm from "./pages/Activity/";
+import Logout from "./pages/UserDashboard/Logout";
 
 export const routes = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const routes = createBrowserRouter([
     element: <Signup />,
   },
   {
+    path: "/logout",
+    element: <Logout />,
+  },
+  {
     path: "/dashboard",
     element: <ProtectedRoutes />,
     children: [
@@ -36,10 +41,10 @@ export const routes = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard />,
       },
-      {
-        path: "/dashboard/history",
-        element: <History />,
-      },
+      // {
+      //   path: "/dashboard/history",
+      //   element: <History />,
+      // },
     ],
   },
 

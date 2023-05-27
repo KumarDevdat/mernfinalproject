@@ -85,7 +85,7 @@ const activityFields = [
   {
       id: "duration",
       name: "Duration",
-      type: "input",
+      type: "text",
       isRequired: true,
       placeholder: "Set Duration in Minutes",
   },

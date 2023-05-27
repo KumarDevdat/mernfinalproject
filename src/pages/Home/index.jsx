@@ -1,4 +1,4 @@
-import "./index.css";
+import "./home.css";
 import Navbar from "../../components/Navbar";
 import Layoutcarousel from "./Layoutcarousel";
 import Brochure from "./Brochure";

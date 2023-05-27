@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal} from "../../assets";
+import { dashboardgoal } from "../../assets";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
@@ -9,7 +9,7 @@ import { GiHiking } from "react-icons/gi";
 import { AiFillDelete } from "react-icons/ai";
 import { notification } from "antd";
 import Actvity from "../Activity";
-import UpdateActivity from '../Activity/Update'
+import UpdateActivity from "../Activity/Update";
 import { getActivityPagination, deleteActivity } from "../../Api/dashboard";
 import { Pagination } from "antd";
 const Dashboard = () => {
@@ -17,9 +17,9 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const [limit, setlimit] = useState(4);
   const [show, setShow] = useState(false);
-    
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
   const [state, setState] = useState({
     values: {
       update_id: "",
@@ -56,7 +56,7 @@ const Dashboard = () => {
       placement: "topRight",
     });
   };
-  
+
   useEffect(() => {
     getActivities();
   }, [page]);
@@ -102,13 +102,13 @@ const Dashboard = () => {
                     <i className="text-white grid justify-center text-[60px]">
                       {element.activitytype == "bicycle" ? (
                         <IoMdBicycle />
-                      ) : element.activitytype == "swim" ? (
+                      ) : element.activitytype == "swimming" ? (
                         <FaSwimmer />
-                      ) : element.activitytype == "walk" ? (
+                      ) : element.activitytype == "walking" ? (
                         <RiWalkFill />
-                      ) : element.activitytype == "run" ? (
+                      ) : element.activitytype == "running" ? (
                         <BiRun />
-                      ) : element.activitytype == "hike" ? (
+                      ) : element.activitytype == "hiking" ? (
                         <GiHiking />
                       ) : (
                         ""
@@ -135,9 +135,8 @@ const Dashboard = () => {
                         <i
                           className="text-[30px]"
                           onClick={() => {
-                            handleShow(setState.update_id(element._id))
+                            handleShow(setState.update_id(element._id));
                           }}
-                          
                         >
                           <FaEdit />
                         </i>
@@ -162,20 +161,19 @@ const Dashboard = () => {
               total={30}
               onChange={(page) => setPage(page)}
             />
-              <Actvity 
+            <Actvity
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}
               handleNotification={handleNotification}
-              />
-              <UpdateActivity
+            />
+            <UpdateActivity
               state={state}
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}
               handleNotification={handleNotification}
-              />
-
+            />
           </div>
         </div>
       </div>
