@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signupFields } from "../../utils/formFields";
-import FormButton from "../../components/FormButton";
-import Input from "../../components/Input";
-import Navbar from "../../components/Navbar";
-import { beams, monkey1, monkey2, monkey3 } from "../../assets";
+import FormButton from "../../components/form/FormButton";
+import Input from "../../components/form/Input";
+import Navbar from "../../components/common/Navbar";
+import { beams, monkey1, monkey2, monkey3 } from "../../assets/images/";
 
 const SignupPage = () => {
   const [signupState, setSignupState] = useState({});

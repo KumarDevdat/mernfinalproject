@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal } from "../../assets";
+import { dashboardgoal } from "../../assets/images/";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";

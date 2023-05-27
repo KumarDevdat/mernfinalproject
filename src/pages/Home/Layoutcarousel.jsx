@@ -1,5 +1,5 @@
 import Carousel from "react-bootstrap/Carousel";
-import { cycle, hike, running } from "../../assets/index";
+import { cycle, hike, running } from "../../assets/images/";
 import { Link } from "react-router-dom";
 
 function Layoutcarousel() {

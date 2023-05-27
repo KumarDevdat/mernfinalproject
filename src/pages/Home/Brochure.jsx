@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { yoga, strategies, workout, pulsemeter } from "../../assets/index";
+import { yoga, strategies, workout, pulsemeter } from "../../assets/images/";
 
 function Brochure() {
   return (

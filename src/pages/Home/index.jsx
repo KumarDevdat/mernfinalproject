@@ -1,5 +1,5 @@
 import "./home.css";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar";
 import Layoutcarousel from "./Layoutcarousel";
 import Brochure from "./Brochure";
 import Footer from "./Footer";

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { activityFields } from "../../utils/formFields";
-import FormButton from "../../components/FormButton";
-import Input from "../../components/Input";
-import { beams } from "../../assets";
+import FormButton from "../../components/form/FormButton";
+import Input from "../../components/form/Input";
+import { beams } from "../../assets/images/";
 import { Modal } from "react-bootstrap";
 import { createActivity } from "../../Api/dashboard";
 const fields = activityFields;
