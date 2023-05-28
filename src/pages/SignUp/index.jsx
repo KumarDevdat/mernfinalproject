@@ -73,7 +73,7 @@ const SignupPage = () => {
             <h2 className="mt-1 font-mono text-3xl text-center text-gray-900">
               SignUp
             </h2>
-            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <form className="mx-4 space-y-4" onSubmit={handleSubmit}>
               {signupFields.map((field) => (
                 <div key={field.id} onClick={() => handleInputClick(field.id)}>
                   <Input
