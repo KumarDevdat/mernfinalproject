@@ -9,6 +9,7 @@ import ProtectedRoutes from "./pages/ProtectedRoutes";
 import User from "./pages/User/";
 import ActivityForm from "./pages/Activity/";
 import UserDashboard from './pages/UserDashboardV2'
+import Logout from "./pages/UserDashboard/Logout";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -27,22 +28,22 @@ export const routes = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: "/UserDashboard",
-    element: <UserDashboard />,
+    path: "/logout",
+    element: <Logout />,
   },
   {
-    path: "/dashboard",
+    path: "/UserDashboard",
     element: <ProtectedRoutes />,
     children: [
       {
         index: true,
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <UserDashboard />,
       },
-      {
-        path: "/dashboard/history",
-        element: <History />,
-      },
+      // {
+      //   path: "/dashboard/history",
+      //   element: <History />,
+      // },
     ],
   },
 

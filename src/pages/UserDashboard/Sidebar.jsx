@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiFillHome, AiOutlineHistory, AiFillSetting } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
-import { control } from "../../assets";
+import { control } from "../../assets/images/";
 const Sidebar = () => {
   const menuItem = [
     {
@@ -65,7 +65,7 @@ const Sidebar = () => {
         })}
       </ul>
       </div>
-      <div className="p-7 text-2x1 font-semibold">
+      <div className="font-semibold p-7 text-2x1">
       {/* <main>{children}</main> */}
       </div>
     </div>

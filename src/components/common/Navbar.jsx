@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { menu, logo } from "../assets";
+import { menu, logo } from "../../assets/images";
 
 
 function classNames(...classes) {

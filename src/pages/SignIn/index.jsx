@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signinFields } from "../../utils/formFields.js";
-import FormButton from "../../components/FormButton.jsx";
+import FormButton from "../../components/form/FormButton.jsx";
 import RememberMe from "./RememberMe";
-import Input from "../../components/Input.jsx";
-import Navbar from "../../components/Navbar.jsx";
-import { beams, monkey1, monkey2, monkey3 } from "../../assets";
+import Input from "../../components/form/Input.jsx";
+import Navbar from "../../components/common/Navbar.jsx";
+import { beams, monkey1, monkey2, monkey3 } from "../../assets/images";
 
 const SigninPage = () => {
   const [signinState, setSigninState] = useState({});

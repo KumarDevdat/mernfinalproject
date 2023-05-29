@@ -1,7 +1,7 @@
-import "./index.css";
-import Navbar from "../../components/Navbar";
+import "./home.css";
+import Navbar from "../../components/common/Navbar";
 import Layoutcarousel from "./Layoutcarousel";
-import Brocure from "./Brochure";
+import Brochure from "./Brochure";
 import Footer from "./Footer";
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
           </div>
         </div>
         <br />
-        <Brocure />
+        <Brochure />
         <Footer /> 
       </div>
     </>

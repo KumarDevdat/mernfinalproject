@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal, menu } from "../../assets";
+import { dashboardgoal } from "../../assets/images/";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
 import { FaSwimmer, FaCalendar, FaEdit } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 import { AiFillDelete } from "react-icons/ai";
-import { notification, Modal } from "antd";
+import { notification } from "antd";
 import Actvity from "../Activity";
-import UpdateActivity from '../Activity/Update'
-import {updateActivity} from "../../Api/dashboard"
+import UpdateActivity from "../Activity/Update";
 import { getActivityPagination, deleteActivity } from "../../Api/dashboard";
 import { Pagination } from "antd";
 const Dashboard = () => {
@@ -18,9 +17,12 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const [limit, setlimit] = useState(4);
   const [show, setShow] = useState(false);
+
     var id='';
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+
+
   const [state, setState] = useState({
     values: {
       update_id: "",
@@ -57,10 +59,6 @@ const Dashboard = () => {
       placement: "topRight",
     });
   };
-  const getIdForUpdate =(id)=>{
-    handleShow();
-    setState.update_id(id)
-  }
   useEffect(() => {
     getActivities();
   }, [page]);
@@ -70,9 +68,9 @@ const Dashboard = () => {
         <div className="">
           <Sidebar />
         </div>
-        <div className="container  ">
+        <div className="container ">
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron">
+            <h1 className="py-4 text-6xl font-normal font-orbitron">
               Overview
             </h1>
             <div className="w-[46em] h-[344px] rounded-[50px] bg-mainBgColor flex lg:items-center">
@@ -91,7 +89,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron">
+            <h1 className="py-4 text-6xl font-normal font-orbitron">
               Activity
             </h1>
           </div>
@@ -106,13 +104,13 @@ const Dashboard = () => {
                     <i className="text-white grid justify-center text-[60px]">
                       {element.activitytype == "bicycle" ? (
                         <IoMdBicycle />
-                      ) : element.activitytype == "swim" ? (
+                      ) : element.activitytype == "swimming" ? (
                         <FaSwimmer />
-                      ) : element.activitytype == "walk" ? (
+                      ) : element.activitytype == "walking" ? (
                         <RiWalkFill />
-                      ) : element.activitytype == "run" ? (
+                      ) : element.activitytype == "running" ? (
                         <BiRun />
-                      ) : element.activitytype == "hike" ? (
+                      ) : element.activitytype == "hiking" ? (
                         <GiHiking />
                       ) : (
                         ""
@@ -139,10 +137,11 @@ const Dashboard = () => {
                         <i
                           className="text-[30px]"
                           onClick={() => {
+
                             getIdForUpdate(element._id);
-                            
+                            handleShow(setState.update_id(element._id));
+
                           }}
-                          
                         >
                           <FaEdit />
                         </i>
@@ -167,7 +166,7 @@ const Dashboard = () => {
               total={30}
               onChange={(page) => setPage(page)}
             />
-              <Actvity 
+            <Actvity
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}
@@ -175,6 +174,11 @@ const Dashboard = () => {
               />
               <UpdateActivity
               id={id}
+
+            />
+            <UpdateActivity
+              state={state}
+
               handleShow={handleShow}
               show={show}
               handleClose={handleClose}

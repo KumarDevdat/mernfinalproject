@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signupFields } from "../../utils/formFields";
-import FormButton from "../../components/FormButton";
-import Input from "../../components/Input";
-import Navbar from "../../components/Navbar";
-import { beams, monkey1, monkey2, monkey3 } from "../../assets";
+import FormButton from "../../components/form/FormButton";
+import Input from "../../components/form/Input";
+import Navbar from "../../components/common/Navbar";
+import { beams, monkey1, monkey2, monkey3 } from "../../assets/images/";
 
 const SignupPage = () => {
   const [signupState, setSignupState] = useState({});
@@ -73,7 +73,7 @@ const SignupPage = () => {
             <h2 className="mt-1 font-mono text-3xl text-center text-gray-900">
               SignUp
             </h2>
-            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <form className="mx-4 space-y-4" onSubmit={handleSubmit}>
               {signupFields.map((field) => (
                 <div key={field.id} onClick={() => handleInputClick(field.id)}>
                   <Input
