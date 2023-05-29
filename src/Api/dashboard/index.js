@@ -9,8 +9,8 @@ export const getActivity = async () => {
   return await api.get("/v1/exercise/");
 };
 export const createActivity = async (data) => {
-//   return await api.get(`/v1//exercise/save/`, data);
-console.log("Data is here====",data)
+  console.log('APIDataHere===>',data)
+  // return await api.post(`/api/v1/exercise/save`, data);
 };
 export const deleteActivity = async (id) => {
   return await api.delete(`/v1/exercise/${id}`);

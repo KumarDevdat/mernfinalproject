@@ -38,7 +38,7 @@ export default function ActivityPage(props) {
           body: JSON.stringify(activityState),
         }
       );
-
+      console.log(response)
       if (response.ok) {
         const data = await response.json();
         console.log("Activity created successfully", data);

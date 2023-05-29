@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import "./App.css";
 import Home from "./pages/Home/";
 import Signin from "./pages/SignIn/";
@@ -9,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import User from "./pages/User/";
 import ActivityForm from "./pages/Activity/";
-
+import UserDashboard from './pages/UserDashboardV2'
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +25,10 @@ export const routes = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/UserDashboard",
+    element: <UserDashboard />,
   },
   {
     path: "/dashboard",

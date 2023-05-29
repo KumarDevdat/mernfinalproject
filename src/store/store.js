@@ -4,4 +4,5 @@ export const store = configureStore({
   reducer: {
     app: activityDetail,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
