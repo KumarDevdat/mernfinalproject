@@ -1,57 +1,42 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal } from "../../assets/images/";
+import { dashboardgoal, } from "../../assets";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
 import { FaSwimmer, FaCalendar, FaEdit } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 import { AiFillDelete } from "react-icons/ai";
-import { notification } from "antd";
-import Actvity from "../Activity";
-import UpdateActivity from "../Activity/Update";
-import { getActivityPagination, deleteActivity } from "../../Api/dashboard";
+import { notification, Modal } from "antd";
+import { useDispatch } from "react-redux";
+import ActivityModal from "./Modal";
+import UpdateModal from "./Update Modal";
+import {
+  AllUserActivity,
+  getUserActivity,
+  deleteUserActivity,
+} from "../../features/activitySlice";
+import { useSelector } from "react-redux";
 import { Pagination } from "antd";
+import Navbar from "./Navbar";
 const Dashboard = () => {
+  const { activity, loading,allActivity } = useSelector((state) => state.app);
   const [page, setPage] = useState(1);
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserActivity({page,limit}));
+    dispatch(AllUserActivity())
+  }, [page]);
+  const [id, setId] = useState();
   const [limit, setlimit] = useState(4);
   const [show, setShow] = useState(false);
-
-    var id='';
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
-
-
-  const [state, setState] = useState({
-    values: {
-      update_id: "",
-      activitytype: "",
-      description: "",
-      date: "",
-      duration: "",
-    },
-    activityList: [],
-    totalPage: [],
-  });
-  const getActivities = async () => {
-    const result = await getActivityPagination(page, limit);
-    if (result.data.status === 200) {
-      setState((prevState) => ({
-        ...prevState,
-        activityList: result.data.result.getActivity,
-        totalPage: result.data.result.totalPages,
-      }));
-    }
-  };
-  const ActivityDelete = async (id) => {
-    const results = await deleteActivity(id);
-    if (results.data.status === 200) {
-      let message = results.data.msg;
-      let success = results.data.success;
-      handleNotification("success", message, success);
-    }
-  };
+  const [updateshow, setUpdateShow] = useState(false);
+  const updatehandleShow = () => {setUpdateShow(true) };
+  const handleShow = () => setShow(true);
+  const handleClose = () => {setShow(false);setUpdateShow(false) };
+  if(loading){
+    <h1>Loading...</h1>
+  }
   const handleNotification = (value, message, success) => {
     notification[value]({
       message: success,
@@ -59,28 +44,28 @@ const Dashboard = () => {
       placement: "topRight",
     });
   };
-  useEffect(() => {
-    getActivities();
-  }, [page]);
   return (
     <>
-      <div className="flex">
+      <div className="lg:flex sm:overflow-hidden">
+        <Navbar/>
         <div className="">
+          
           <Sidebar />
         </div>
         <div className="container ">
           <div>
-            <h1 className="py-4 text-6xl font-normal font-orbitron">
+            <h1 className="py-4 font-normal text-6xl font-orbitron ">
               Overview
             </h1>
-            <div className="w-[46em] h-[344px] rounded-[50px] bg-mainBgColor flex lg:items-center">
-              <img src={dashboardgoal} alt="" />
+            <div className="lg:w-[46em] sm:w-screen sm:px-3 h-[344px] rounded-[50px] bg-mainBgColor lg:flex lg:items-center sm:mx-[20px]">
+              <img className="img-goal" src={dashboardgoal} alt="" />
               <div>
-                <p className="text-4xl leading-[45px] text-white font-orbitron">
+                <p className="lg:text-4xl sm:text-[20px] sm:pl-[5px] leading-[45px] text-white font-orbitron">
                   SET GOAL AND MOTIVATE YOURSELF
                 </p>
                 <button
-                  className="mt-5 w-[200px] h-16 bg-white rounded-[15px] bg-grey font-normal text-xl font-orbitron"
+                id="goal-btn"
+                  className="mt-5  lg:w-[200px] lg:h-16 bg-white lg:rounded-[15px] bg-grey font-normal lg:text-xl sm:text-[10px] font-orbitron"
                   onClick={handleShow}
                 >
                   Set Goal
@@ -89,28 +74,26 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            <h1 className="py-4 text-6xl font-normal font-orbitron">
+            <h1 className="py-4 font-normal text-6xl font-orbitron">
               Activity
             </h1>
           </div>
-          <div className="flex justify-evenly">
-            {state.activityList.map((element, key) => {
+          <div id="card-container" className="lg:flex">
+            {
+            activity.map((element, index) => {
               return (
-                <>
-                  <div
-                    key={key}
-                    className="w-[250px] h-[230px] bg-mainBgColor rounded-[25px] "
-                  >
+                <div key={index}>
+                  <div id="singlecard" className="w-[250px] mr-[3em] h-[230px] bg-mainBgColor rounded-[25px]  ">
                     <i className="text-white grid justify-center text-[60px]">
-                      {element.activitytype == "bicycle" ? (
+                      {element.activitytype == "Bicycle" ? (
                         <IoMdBicycle />
-                      ) : element.activitytype == "swimming" ? (
+                      ) : element.activitytype == "Swimming" ? (
                         <FaSwimmer />
-                      ) : element.activitytype == "walking" ? (
+                      ) : element.activitytype == "Walking" ? (
                         <RiWalkFill />
-                      ) : element.activitytype == "running" ? (
+                      ) : element.activitytype == "Running" ? (
                         <BiRun />
-                      ) : element.activitytype == "hiking" ? (
+                      ) : element.activitytype == "Hiking" ? (
                         <GiHiking />
                       ) : (
                         ""
@@ -137,10 +120,7 @@ const Dashboard = () => {
                         <i
                           className="text-[30px]"
                           onClick={() => {
-
-                            getIdForUpdate(element._id);
-                            handleShow(setState.update_id(element._id));
-
+                            [setId(element._id), updatehandleShow(element.id)];
                           }}
                         >
                           <FaEdit />
@@ -148,7 +128,7 @@ const Dashboard = () => {
                         <i
                           className="text-[30px] pl-[10px]"
                           onClick={() => {
-                            ActivityDelete(element._id);
+                            dispatch(deleteUserActivity(element._id));
                           }}
                         >
                           <AiFillDelete />
@@ -156,36 +136,28 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
-          <div className="flex justify-center pt-[15px]">
+          <div id="paginate-container" className="lg:flex lg:justify-center lg:pt-[15px]">
             <Pagination
               defaultCurrent={1}
-              total={30}
+              total={allActivity.length}
+              pageSize={4}
               onChange={(page) => setPage(page)}
             />
-            <Actvity
-              handleShow={handleShow}
+            <ActivityModal
               show={show}
               handleClose={handleClose}
               handleNotification={handleNotification}
-              />
-              <UpdateActivity
-              id={id}
-
             />
-            <UpdateActivity
-              state={state}
-
-              handleShow={handleShow}
-              show={show}
+            <UpdateModal
+              id={id}
+              updateshow={updateshow}
               handleClose={handleClose}
               handleNotification={handleNotification}
-              state={state}
-              />
-
+            />
           </div>
         </div>
       </div>

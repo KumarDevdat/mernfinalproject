@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import "./App.css";
 import Home from "./pages/Home/";
 import Signin from "./pages/SignIn/";
@@ -9,8 +8,8 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoutes from "./pages/ProtectedRoutes";
 import User from "./pages/User/";
 import ActivityForm from "./pages/Activity/";
+import UserDashboard from './pages/UserDashboardV2'
 import Logout from "./pages/UserDashboard/Logout";
-
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -33,13 +32,13 @@ export const routes = createBrowserRouter([
     element: <Logout />,
   },
   {
-    path: "/dashboard",
+    path: "/UserDashboard",
     element: <ProtectedRoutes />,
     children: [
       {
         index: true,
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <UserDashboard />,
       },
       // {
       //   path: "/dashboard/history",

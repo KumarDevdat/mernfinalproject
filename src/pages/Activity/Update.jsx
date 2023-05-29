@@ -13,7 +13,7 @@ const initialActivityState = Object.fromEntries(
 export default function ActivityPage(props) {
   const { show, handleShow, handleClose, handleNotification,state } = props;
   const [activityState, setActivityState] = useState(initialActivityState);
-
+  
   const handleChange = (e) => {
     const { id, value } = e.target;
     setActivityState((prevState) => ({
