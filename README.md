@@ -25,28 +25,20 @@ This is the frontend application for the Activity Tracker app. It provides a bea
 The server will start running on the specified port.
 
 ## Usage
-The Activity Tracker app provides an intuitive and user-friendly interface for tracking and managing your activities.
 
-## Home Page
-The home page features a navigation bar with a logo and sign-in/sign-up buttons. It also includes a carousel with a register button and a voucher section. The footer section contains additional information and links.
+1. **Login**: Access the login page to log in to your account and access the dashboard.
 
-## Login Page
-The login page allows users to log in to their accounts. It presents a login form that interacts with the backend to authenticate users. Upon successful login, users are redirected to the dashboard page.
+2. **Signup**: If you don't have an account, sign up for a new account through the signup page.
 
-## Signup Page
-The signup page enables new users to create an account. It includes a signup form that collects user information and communicates with the backend to register new users. After successful signup, users can proceed to the dashboard.
+3. **Dashboard**: Once logged in, you'll be redirected to the dashboard page, where you can manage your activities.
 
-## Dashboard Page
-The dashboard page serves as the central hub for managing activities. It includes a sidebar slider with options like logout and history. The main content area displays various features.
+4. **Add Activity**: Click on the "Add Activity" button on the dashboard to open a modal. Fill in the activity details (name, date, duration, notes) and submit the form to add a new activity.
 
-## Add Activity
-The "Add Activity" button on the dashboard opens a modal containing a form to add a new activity. Users can provide details such as the activity name, date, duration, and any additional notes. After submitting the form, the activity is added to the user's list of activities.
+5. **Viewing Activities**: Activities added by the user will be displayed as cards on the dashboard. Each card shows relevant information and may have options to edit or delete the activity.
 
-## Activity Cards
-The activities added by the user are rendered as cards on the dashboard. Each card represents an activity and displays relevant information such as the activity name, date, and duration. The card may also include an edit button and a delete button for managing the activity.
+6. **Pagination**: If you have a large number of activities, pagination is implemented to improve usability. Navigate between pages to view additional activities.
 
-## Pagination
-To improve usability and manage large activity lists, pagination is implemented. Only a limited number of activity cards (e.g., 4) are displayed per page. Users can navigate between pages to view additional activities.
+7. **Logout**: To log out from the app, click on the logout option in the sidebar.
 
 ## Dependencies
 The application uses vite: it is a build tool that aims to provide a faster and leaner development experience for modern web projects.
@@ -74,6 +66,4 @@ Make sure to install these dependencies before running the application.
 Contributions to the Activity Tracker app are welcome! If you would like to contribute, please follow the guidelines outlined in the contribution guidelines file.
 
 ## License
-This project is licensed under the MIT License. You can find more details in the LICENSE file.
-
-Feel free to customize and enhance this README file to suit your project's specific needs.
+This project is licensed under the [MIT License](LICENSE). You can find more details in the LICENSE file.
