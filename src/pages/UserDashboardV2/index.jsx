@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { dashboardgoal, } from "../../assets";
+import { dashboardgoal, } from "../../assets/images";
 import { IoMdBicycle } from "react-icons/io";
 import { BiRun, BiTimeFive } from "react-icons/bi";
 import { RiWalkFill } from "react-icons/ri";
@@ -54,7 +54,7 @@ const Dashboard = () => {
         </div>
         <div className="container ">
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron ">
+            <h1 className="py-4 text-6xl font-normal font-orbitron ">
               Overview
             </h1>
             <div className="lg:w-[46em] sm:w-screen sm:px-3 h-[344px] rounded-[50px] bg-mainBgColor lg:flex lg:items-center sm:mx-[20px]">
@@ -74,7 +74,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div>
-            <h1 className="py-4 font-normal text-6xl font-orbitron">
+            <h1 className="py-4 text-6xl font-normal font-orbitron">
               Activity
             </h1>
           </div>

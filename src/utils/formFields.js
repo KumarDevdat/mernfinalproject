@@ -1,6 +1,6 @@
 const signinFields = [
   {
-    id: "email-address",
+    id: "email",
     name: "email",
     type: "email",
     isRequired: true,
@@ -28,7 +28,7 @@ const signupFields = [
     ,
   },
   {
-    id: "email-address",
+    id: "email",
     name: "email",
     type: "email",
     isRequired: true,
