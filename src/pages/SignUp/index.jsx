@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { notification } from "antd";
 import { signupFields } from "../../utils/formFields";
 import FormButton from "../../components/form/FormButton";
 import Input from "../../components/form/Input";
@@ -17,6 +18,13 @@ const SignupPage = () => {
       [id]: value,
     }));
   };
+  const handleNotification = (value, message, success) => {
+    notification[value]({
+      message: success,
+      description: message,
+      placement: "topRight",
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,9 +37,14 @@ const SignupPage = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Account created successfully", data);
-        setSignupState({}); // Reset the form
+        const results = await response.json();
+        // const { user, token, expiresIn, msg, status, success } = results;
+
+        const { msg, success } = results;
+        handleNotification("success", msg, success);
+        setSignupState({});
+        // Redirect to a different page or perform other actions
+        window.location.href = "/dashboard";
       } else {
         const errorData = await response.json();
         console.log("Failed to create account", errorData);

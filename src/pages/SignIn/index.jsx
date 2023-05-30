@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { notification } from "antd";
 import { signinFields } from "../../utils/formFields.js";
 import FormButton from "../../components/form/FormButton.jsx";
 import RememberMe from "./RememberMe";
@@ -10,6 +11,14 @@ import { beams, monkey1, monkey2, monkey3 } from "../../assets/images";
 const SigninPage = () => {
   const [signinState, setSigninState] = useState({});
   const [selectedMonkey, setSelectedMonkey] = useState(null);
+
+  const handleNotification = (value, message, success) => {
+    notification[value]({
+      message: success,
+      description: message,
+      placement: "topRight",
+    });
+  };
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -27,8 +36,11 @@ const SigninPage = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Signin successful", data);
+        const results = await response.json();
+        // const { user, token, expiresIn, msg, status, success } = results;
+
+        const { msg, success } = results;
+        handleNotification("success", msg, success);
 
         // Redirect to a different page or perform other actions
         window.location.href = '/dashboard';
@@ -72,12 +84,12 @@ const SigninPage = () => {
             <form className="mx-4 space-y-4" onSubmit={handleSubmit}>
               {signinFields.map((field) => (
                 <div key={field.id} onClick={() => handleInputClick(field.id)}>
-                <Input
-                  key={field.id}
-                  handleChange={handleChange}
-                  value={signinState[field.id] || ""}
-                  {...field}
-                />
+                  <Input
+                    key={field.id}
+                    handleChange={handleChange}
+                    value={signinState[field.id] || ""}
+                    {...field}
+                  />
                 </div>
               ))}
               <RememberMe />
