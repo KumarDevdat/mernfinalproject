@@ -27,7 +27,7 @@ The server will start running on the specified port.
 ## Usage
 The Activity Tracker app provides an intuitive and user-friendly interface for tracking and managing your activities.
 
-#3 Home Page
+## Home Page
 The home page features a navigation bar with a logo and sign-in/sign-up buttons. It also includes a carousel with a register button and a voucher section. The footer section contains additional information and links.
 
 ## Login Page
