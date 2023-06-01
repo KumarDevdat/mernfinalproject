@@ -37,7 +37,6 @@ const SigninPage = () => {
 
       if (response.ok) {
         const results = await response.json();
-        // const { user, token, expiresIn, msg, status, success } = results;
 
         const { msg, success } = results;
         handleNotification("success", msg, success);
